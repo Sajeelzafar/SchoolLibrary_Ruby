@@ -29,6 +29,18 @@ class Person < Nameable
   def is_of_age(age); end
 end 
 
+class baseDecorator < Nameable
+  attr_accessor :name
+
+  def initialize(name)
+    @name = name
+  end
+
+  def correct_name
+    @name.correct_name
+  end
+end
+
 def is_of_age(age)
   #rubocop:enable
   age > 18
