@@ -29,7 +29,7 @@ class Person < Nameable
   def is_of_age(age); end
 end 
 
-class baseDecorator < Nameable
+class BaseDecorator < Nameable
   attr_accessor :name
 
   def initialize(name)
@@ -41,7 +41,26 @@ class baseDecorator < Nameable
   end
 end
 
+class CapitalizeDecorator < BaseDecorator
+  def correct_name
+    @name.correct_name.upcase
+  end
+end
+
+class TrimmerDecorator < BaseDecorator
+  def correct_name
+    @name.correct_name.slice!(0...10)
+  end
+end
+
 def is_of_age(age)
   #rubocop:enable
   age > 18
 end
+
+person = Person.new(22, 'maximilianus')
+p person.correct_name
+capitalizedPerson = CapitalizeDecorator.new(person)
+p capitalizedPerson.correct_name
+capitalizedTrimmedPerson = TrimmerDecorator.new(capitalizedPerson)
+p capitalizedTrimmedPerson.correct_name
