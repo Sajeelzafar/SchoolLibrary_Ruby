@@ -1,4 +1,10 @@
-class Person
+class Nameable
+  def correct_name
+    raise NotImplementedError
+  end
+end
+
+class Person < Nameable
   def initialize(age, name = 'Unknown', parent_permission: true)
     @id = Random.rand(1..1000)
     @name = name
@@ -13,11 +19,15 @@ class Person
     age > 18 || parent_permission == true
   end
 
+  def correct_name
+    @name
+  end
+
   private
 
   # rubocop:disable all
   def is_of_age(age); end
-end
+end 
 
 def is_of_age(age)
   #rubocop:enable
