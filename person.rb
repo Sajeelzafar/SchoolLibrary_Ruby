@@ -5,11 +5,14 @@ class Nameable
 end
 
 class Person < Nameable
+  attr_reader :rentals
+  
   def initialize(age, name = 'Unknown', parent_permission: true)
     @id = Random.rand(1..1000)
     @name = name
     @age = age
     @parent_permission = parent_permission
+    @rentals = []
     super()
   end
 
@@ -75,11 +78,6 @@ def is_of_age(age)
 end
 
 person = Person.new(22, 'maximilianus')
-student = Student.new(8, 25, 'Sajeel')
-
-classroom = Classroom.new("Red")
-classroom.new_student(student)
-p classroom.students
 
 p person.correct_name
 capitalizedPerson = CapitalizeDecorator.new(person)
