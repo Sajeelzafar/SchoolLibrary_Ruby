@@ -5,8 +5,8 @@ class Nameable
 end
 
 class Person < Nameable
-  attr_reader :rentals
-  
+  attr_reader :rentals, :id, :parent_permission
+
   def initialize(age, name = 'Unknown', parent_permission: true)
     @id = Random.rand(1..1000)
     @name = name
@@ -17,7 +17,6 @@ class Person < Nameable
   end
 
   attr_accessor :name, :age
-  attr_reader :id, :parent_permission
 
   def can_use_services(age, parent_permission)
     age > 18 || parent_permission == true
