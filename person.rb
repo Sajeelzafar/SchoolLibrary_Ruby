@@ -48,6 +48,14 @@ class CapitalizeDecorator < BaseDecorator
   end
 end
 
+class Classroom
+  attr_accessor :label
+  
+  def initialize(label)
+    @label = label
+  end
+end
+
 class TrimmerDecorator < BaseDecorator
   def correct_name
     @name.correct_name.slice!(0...10)
