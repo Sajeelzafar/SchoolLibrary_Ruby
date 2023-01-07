@@ -24,11 +24,13 @@ class Main
       print "Does the student have their parent's permission? [Y/N] "
       permission_input = gets.chomp.upcase
       permission = check_permission_input(permission_input)
-      @app.create_person(age_input, name_input, type_input, permission)
+      # @app.create_person(age_input, name_input, type_input, permission)
+      @app.create_person(permission,age_input , type_input, name_input)
     when '2'
       print 'What is the specialization of the teacher? '
       spec_input = gets.chomp
-      @app.create_person(age_input, name_input, type_input, nil, spec_input)
+      #@app.create_person(age_input, name_input, type_input, nil, spec_input)
+      @app.create_person(spec_input,age_input, type_input, nil, name_input)
     else
       puts 'Please Enter a Valid option'
       launch

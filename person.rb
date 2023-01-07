@@ -7,13 +7,13 @@ end
 class Person < Nameable
   attr_reader :rentals, :id, :parent_permission
 
-  def initialize(age, name = 'Unknown', parent_permission: true)
+  def initialize(age, name, parent_permission)
+    super()
     @id = Random.rand(1..1000)
     @name = name
     @age = age
     @parent_permission = parent_permission
     @rentals = []
-    super()
   end
 
   attr_accessor :name, :age
@@ -64,11 +64,3 @@ def is_of_age(age)
   #rubocop:enable
   age > 18
 end
-
-person = Person.new(22, 'maximilianus')
-
-p person.correct_name
-capitalizedPerson = CapitalizeDecorator.new(person)
-p capitalizedPerson.correct_name
-capitalizedTrimmedPerson = TrimmerDecorator.new(capitalizedPerson)
-p capitalizedTrimmedPerson.correct_name
