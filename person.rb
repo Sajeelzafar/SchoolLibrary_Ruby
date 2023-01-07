@@ -50,21 +50,6 @@ class CapitalizeDecorator < BaseDecorator
   end
 end
 
-class Classroom
-  attr_accessor :label
-  attr_accessor :students
-  
-  def initialize(label)
-    @label = label
-    @students = []
-  end
-
-  def new_student(student)
-    @students.push(student)
-    student.classroom = self
-  end
-end
-
 class TrimmerDecorator < BaseDecorator
   def correct_name
     @name.correct_name.slice!(0...10)
