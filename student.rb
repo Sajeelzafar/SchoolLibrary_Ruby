@@ -1,4 +1,6 @@
 class Student < Person
+  attr_accessor :classroom
+
   def initialize(classroom, age, _name = 'Unknown', _parent_permission: true)
     # rubocop:disable all
     super(age, name = 'Unknown', parent_permission = true)

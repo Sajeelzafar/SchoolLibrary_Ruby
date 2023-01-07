@@ -50,9 +50,16 @@ end
 
 class Classroom
   attr_accessor :label
+  attr_accessor :students
   
   def initialize(label)
     @label = label
+    @students = []
+  end
+
+  def new_student(student)
+    @students.push(student)
+    student.classroom = self
   end
 end
 
@@ -68,6 +75,12 @@ def is_of_age(age)
 end
 
 person = Person.new(22, 'maximilianus')
+student = Student.new(8, 25, 'Sajeel')
+
+classroom = Classroom.new("Red")
+classroom.new_student(student)
+p classroom.students
+
 p person.correct_name
 capitalizedPerson = CapitalizeDecorator.new(person)
 p capitalizedPerson.correct_name
